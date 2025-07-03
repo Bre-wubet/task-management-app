@@ -1,5 +1,5 @@
 import express from 'express';
-import Task from '../models/task.js';
+import Task from '../models/Task.js';
 
 const router = express.Router();
 // @desc    Get all tasks

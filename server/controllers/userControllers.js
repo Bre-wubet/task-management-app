@@ -31,7 +31,7 @@ export const getAllUsers = async (req, res) => {
                 completedTasks
             }; 
         }));
-        // res.status(200).json(usersWithTaskCounts);
+        res.status(200).json(usersWithTaskCounts);
     } catch (error) {
         console.error('Error fetching users:', error.message);
         res.status(500).json({ message: 'Server error' });

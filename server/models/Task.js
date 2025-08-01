@@ -5,13 +5,13 @@ const todoSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  completed: {
+  isCompleted: {
     type: Boolean,
     default: false,
   },
-  });
+});
 
-  const taskSchema = new mongoose.Schema({
+const taskSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,

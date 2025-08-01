@@ -1,15 +1,6 @@
 import User from '../models/User.js';
-import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-
-
-
-//generate JWT token
-const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, {
-        expiresIn: '7d',
-    });
-};
+import { generateToken } from '../utils/jwtUtils.js';
 
 // Register a new user
 export const registerUser = async (req, res) => {
@@ -86,13 +77,13 @@ export const loginUser = async (req, res) => {
 
         res.status(200).json({
             message: 'Logged in successfully',
+            token: generateToken(user._id),
             user: {
                 _id: user._id,
                 name: user.name,
                 email: user.email,
                 role: user.role,
                 profileImageUrl: user.profileImageUrl,
-                token: generateToken(user._id),
             }
         });
     } catch (error) {

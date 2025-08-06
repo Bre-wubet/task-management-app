@@ -105,7 +105,7 @@ function MyTasks() {
 
                 {/* Status Summary */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-                    <div className="bg-white rounded-lg shadow p-6">
+                    <div className="bg-blue-200 rounded-lg shadow p-6">
                         <div className="flex items-center">
                             <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
                                 <span className="text-white font-bold">{statusSummary.all || 0}</span>
@@ -116,7 +116,7 @@ function MyTasks() {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-white rounded-lg shadow p-6">
+                    <div className="bg-pink-200 rounded-lg shadow p-6">
                         <div className="flex items-center">
                             <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
                                 <span className="text-white font-bold">{statusSummary.pending || 0}</span>
@@ -127,7 +127,7 @@ function MyTasks() {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-white rounded-lg shadow p-6">
+                    <div className="bg-gray-200 rounded-lg shadow p-6">
                         <div className="flex items-center">
                             <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
                                 <span className="text-white font-bold">{statusSummary.inProgress || 0}</span>
@@ -138,7 +138,7 @@ function MyTasks() {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-white rounded-lg shadow p-6">
+                    <div className="bg-green-200 rounded-lg shadow p-6">
                         <div className="flex items-center">
                             <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                                 <span className="text-white font-bold">{statusSummary.completed || 0}</span>
@@ -152,7 +152,7 @@ function MyTasks() {
                 </div>
 
                 {/* Filters */}
-                <div className="bg-white rounded-lg shadow mb-6 p-6">
+                <div className="bg-blue-200 rounded-lg shadow mb-6 p-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
                             <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-2">
@@ -198,7 +198,7 @@ function MyTasks() {
                 </div>
 
                 {/* Tasks List */}
-                <div className="bg-white rounded-lg shadow">
+                <div className="bg-gray-200 rounded-lg shadow border-b-2 border-blue-600">
                     {loading ? (
                         <div className="p-8 text-center">
                             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
@@ -211,7 +211,7 @@ function MyTasks() {
                     ) : (
                         <div className="divide-y divide-gray-200">
                             {filteredTasks.map((task) => (
-                                <div key={task._id} className="p-6 hover:bg-gray-50">
+                                <div key={task._id} className="p-6 hover:bg-gray-100 shadow-md">
                                     <div className="flex items-start justify-between">
                                         <div className="flex-1">
                                             <div className="flex items-center space-x-3 mb-2">

@@ -100,17 +100,17 @@ function UserDashboard() {
                             />
                         )}
                         <div>
-                            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                            <h1 className="text-3xl font-bold text-white mb-2">
                                 Welcome back, {user.name}!
                             </h1>
-                            <p className="text-gray-600">Here's an overview of your tasks and progress</p>
+                            <p className="text-white">Here's an overview of your tasks and progress</p>
                         </div>
                     </div>
                 </div>
 
                 {/* Statistics Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                    <div className="bg-white rounded-lg shadow p-6">
+                    <div className="bg-blue-200 rounded-lg shadow p-6">
                         <div className="flex items-center">
                             <div className="flex-shrink-0">
                                 <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
@@ -127,7 +127,7 @@ function UserDashboard() {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-white rounded-lg shadow p-6">
+                    <div className="bg-pink-200 rounded-lg shadow p-6">
                         <div className="flex items-center">
                             <div className="flex-shrink-0">
                                 <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
@@ -144,7 +144,7 @@ function UserDashboard() {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-white rounded-lg shadow p-6">
+                    <div className="bg-green-200 rounded-lg shadow p-6">
                         <div className="flex items-center">
                             <div className="flex-shrink-0">
                                 <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
@@ -161,7 +161,7 @@ function UserDashboard() {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-white rounded-lg shadow p-6">
+                    <div className="bg-red-200 rounded-lg shadow p-6">
                         <div className="flex items-center">
                             <div className="flex-shrink-0">
                                 <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
@@ -183,11 +183,11 @@ function UserDashboard() {
                 {/* Charts Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
                     {/* Task Distribution Chart */}
-                    <div className="bg-white rounded-lg shadow p-6">
+                    <div className="bg-blue-200 rounded-lg shadow p-6">
                         <h3 className="text-lg font-semibold text-gray-900 mb-4">Task Distribution</h3>
                         <div className="space-y-4">
                             <div className="flex items-center justify-between">
-                                <span className="text-sm font-medium text-gray-500">Pending</span>
+                                <span className="text-sm font-medium text-red-800">Pending</span>
                                 <div className="flex items-center">
                                     <div className="w-32 bg-gray-200 rounded-full h-2 mr-3">
                                         <div
@@ -203,7 +203,7 @@ function UserDashboard() {
                                 </div>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-sm font-medium text-gray-500">In Progress</span>
+                                <span className="text-sm font-medium text-yellow-500">In Progress</span>
                                 <div className="flex items-center">
                                     <div className="w-32 bg-gray-200 rounded-full h-2 mr-3">
                                         <div
@@ -219,7 +219,7 @@ function UserDashboard() {
                                 </div>
                             </div>
                             <div className="flex items-center justify-between">
-                                <span className="text-sm font-medium text-gray-500">Completed</span>
+                                <span className="text-sm font-medium text-green-500">Completed</span>
                                 <div className="flex items-center">
                                     <div className="w-32 bg-gray-200 rounded-full h-2 mr-3">
                                         <div
@@ -294,10 +294,10 @@ function UserDashboard() {
                 </div>
 
                 {/* Recent Tasks */}
-                <div className="bg-white rounded-lg shadow">
+                <div className="bg-yellow-100 rounded-lg shadow">
                     <div className="px-6 py-4 border-b border-gray-200">
                         <div className="flex justify-between items-center">
-                            <h3 className="text-lg font-semibold text-gray-900">Recent Tasks</h3>
+                            <h3 className="text-lg font-semibold text-green-900">Recent Tasks</h3>
                             <Link
                                 to="/user/my-tasks"
                                 className="text-blue-600 hover:text-blue-800 text-sm font-medium"
@@ -313,7 +313,7 @@ function UserDashboard() {
                             </div>
                         ) : (
                             dashboardData?.recentTasks?.map((task) => (
-                                <div key={task._id} className="px-6 py-4 hover:bg-gray-50">
+                                <div key={task._id} className="px-6 py-4 bg-gray-100 hover:bg-gray-50">
                                     <div className="flex items-center justify-between">
                                         <div className="flex-1">
                                             <div className="flex items-center space-x-3">
@@ -345,7 +345,7 @@ function UserDashboard() {
                 </div>
 
                 {/* Quick Actions */}
-                <div className="mt-8 bg-white rounded-lg shadow p-6">
+                <div className="mt-8 bg-blue-200 rounded-lg shadow p-6">
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <Link
@@ -384,6 +384,7 @@ function UserDashboard() {
                                 <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                                     <span className="text-white font-bold">✅</span>
                                 </div>
+
                             </div>
                             <div className="ml-4">
                                 <h4 className="text-sm font-medium text-gray-900">Completed Tasks</h4>

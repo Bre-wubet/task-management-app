@@ -26,6 +26,7 @@ function AuthLayout({ children }) {
                 { name: 'Manage Tasks', path: '/admin/manage-tasks' },
                 { name: 'Create Task', path: '/admin/create-task' },
                 { name: 'Manage Users', path: '/admin/manage-users' },
+                { name: 'Reports', path: '/admin/reports' },
             ];
         } else {
             return [
@@ -84,10 +85,10 @@ function AuthLayout({ children }) {
                                                 />
                                             )}
                                             <div className="hidden md:block">
-                                                <div className="text-sm font-medium text-gray-700">{user.name}</div>
-                                                <div className="text-xs text-gray-500">{user.role}</div>
+                                                <div className="text-sm font-medium text-white">{user.name}</div>
+                                                <div className="text-xs text-white">{user.role}</div>
                                             </div>
-                                            <svg className="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <svg className="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                                             </svg>
                                         </div>
@@ -95,14 +96,14 @@ function AuthLayout({ children }) {
                                 </div>
 
                                 {isMenuOpen && (
-                                    <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
-                                        <div className="px-4 py-2 text-sm text-gray-700 border-b border-gray-100">
+                                    <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+                                        <div className="px-4 py-2 text-sm text-white border-b border-gray-100">
                                             <div className="font-medium">{user.name}</div>
-                                            <div className="text-gray-500">{user.email}</div>
+                                            <div className="text-white">{user.email}</div>
                                         </div>
                                         <button
                                             onClick={handleLogout}
-                                            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                            className="block w-full text-left px-4 py-2 text-sm text-gray-200 hover:bg-gray-400"
                                         >
                                             Sign out
                                         </button>

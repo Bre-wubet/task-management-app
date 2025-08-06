@@ -326,7 +326,7 @@ function Dashboard() {
                 {/* Quick Actions */}
                 <div className="mt-8 bg-white rounded-lg shadow p-6">
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         <Link
                             to="/admin/create-task"
                             className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
@@ -367,6 +367,20 @@ function Dashboard() {
                             <div className="ml-4">
                                 <h4 className="text-sm font-medium text-gray-900">Manage Users</h4>
                                 <p className="text-sm text-gray-500">View team members</p>
+                            </div>
+                        </Link>
+                        <Link
+                            to="/admin/reports"
+                            className="flex items-center p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+                        >
+                            <div className="flex-shrink-0">
+                                <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                                    <span className="text-white font-bold">📊</span>
+                                </div>
+                            </div>
+                            <div className="ml-4">
+                                <h4 className="text-sm font-medium text-gray-900">Generate Reports</h4>
+                                <p className="text-sm text-gray-500">Export task and user data</p>
                             </div>
                         </Link>
                     </div>

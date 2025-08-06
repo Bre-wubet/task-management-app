@@ -48,7 +48,7 @@ const exportTasksReport = async (req, res) => {
         );
 
         return workbook.xlsx.write(res).then(() => {
-            res.status(200).json({ message: 'Tasks report exported successfully' });
+            res.end();
         });
 
     } catch (error) {
@@ -121,7 +121,7 @@ const exportUsersReport = async (req, res) => {
         );
 
         return workbook.xlsx.write(res).then(() => {
-            res.status(200).json({ message: 'User task report exported successfully' });
+            res.end();
         });
 
     } catch (error) {

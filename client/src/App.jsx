@@ -11,6 +11,7 @@ import Dashboard from './pages/admin/Dashboard';
 import CreateTask from './pages/admin/CreateTask';
 import ManageTasks from './pages/admin/ManageTasks';
 import ManageUsers from './pages/admin/ManageUsers';
+import Reports from './pages/admin/Reports';
 
 // User pages
 import UserDashboard from './pages/user/UserDashboard';
@@ -94,6 +95,13 @@ function App() {
           <AdminRoute>
             <AuthLayout>
               <ManageUsers />
+            </AuthLayout>
+          </AdminRoute>
+        } />
+        <Route path="/admin/reports" element={
+          <AdminRoute>
+            <AuthLayout>
+              <Reports />
             </AuthLayout>
           </AdminRoute>
         } />

@@ -128,10 +128,10 @@ function CreateTask() {
     return (
         <div className="py-8">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="bg-white rounded-lg shadow-lg p-6">
+                <div className="bg-gray-100 rounded-lg shadow-lg p-6">
                     <div className="mb-8">
-                        <h1 className="text-3xl font-bold text-white mb-2">Create New Task</h1>
-                        <p className="text-white">Fill in the details below to create a new task</p>
+                        <h1 className="text-3xl font-bold text-blue-600 mb-2">Create New Task</h1>
+                        <p className="text-blue-400">Fill in the details below to create a new task</p>
                     </div>
 
                     {error && (
@@ -146,10 +146,10 @@ function CreateTask() {
                         </div>
                     )}
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6 bg-gray-200 rounded-lg shadow-lg p-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label htmlFor="title" className="block text-sm font-medium text-blue-700 mb-2">
                                     Task Title *
                                 </label>
                                 <input
@@ -158,14 +158,14 @@ function CreateTask() {
                                     name="title"
                                     value={formData.title}
                                     onChange={handleChange}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                     placeholder="Enter task title"
                                     required
                                 />
                             </div>
 
                             <div>
-                                <label htmlFor="priority" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label htmlFor="priority" className="block text-sm font-medium text-blue-700 mb-2">
                                     Priority *
                                 </label>
                                 <select
@@ -173,7 +173,7 @@ function CreateTask() {
                                     name="priority"
                                     value={formData.priority}
                                     onChange={handleChange}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                 >
                                     <option value="Low">Low</option>
                                     <option value="Medium">Medium</option>
@@ -183,7 +183,7 @@ function CreateTask() {
                         </div>
 
                         <div>
-                            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
+                            <label htmlFor="description" className="block text-sm font-medium text-blue-700 mb-2">
                                 Description *
                             </label>
                             <textarea
@@ -192,7 +192,7 @@ function CreateTask() {
                                 value={formData.description}
                                 onChange={handleChange}
                                 rows={4}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                 placeholder="Enter task description"
                                 required
                             />
@@ -200,7 +200,7 @@ function CreateTask() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label htmlFor="dueDate" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label htmlFor="dueDate" className="block text-sm font-medium text-blue-700 mb-2">
                                     Due Date *
                                 </label>
                                 <input
@@ -209,13 +209,13 @@ function CreateTask() {
                                     name="dueDate"
                                     value={formData.dueDate}
                                     onChange={handleChange}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                     required
                                 />
                             </div>
 
                             <div>
-                                <label htmlFor="assignedTo" className="block text-sm font-medium text-gray-700 mb-2">
+                                <label htmlFor="assignedTo" className="block text-sm font-medium text-blue-700 mb-2">
                                     Assign To *
                                 </label>
                                 <select
@@ -223,7 +223,7 @@ function CreateTask() {
                                     name="assignedTo"
                                     value={formData.assignedTo}
                                     onChange={handleChange}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full px-3 py-2 border border-blue-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                                     required
                                 >
                                     <option value="">Select a user</option>
@@ -237,7 +237,7 @@ function CreateTask() {
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-4">
+                            <label className="block text-sm font-medium text-blue-700 mb-4">
                                 Todo Checklist
                             </label>
                             <div className="space-y-3">
@@ -247,7 +247,7 @@ function CreateTask() {
                                             type="checkbox"
                                             checked={todo.isCompleted}
                                             onChange={(e) => handleTodoChange(index, 'isCompleted', e.target.checked)}
-                                            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                                            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-blue-300 rounded"
                                         />
                                         <input
                                             type="text"

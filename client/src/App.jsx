@@ -17,6 +17,7 @@ import Reports from './pages/admin/Reports';
 import UserDashboard from './pages/user/UserDashboard';
 import MyTasks from './pages/user/MyTasks';
 import ViewTaskDetails from './pages/user/ViewTaskDetails';
+import ProfileUpdate from './pages/user/ProfileUpdate';
 
 // Layouts
 import AuthLayout from './components/layouts/AuthLayout';
@@ -125,6 +126,13 @@ function App() {
           <UserRoute>
             <AuthLayout>
               <ViewTaskDetails />
+            </AuthLayout>
+          </UserRoute>
+        } />
+        <Route path="/user/profile" element={
+          <UserRoute>
+            <AuthLayout>
+              <ProfileUpdate />
             </AuthLayout>
           </UserRoute>
         } />

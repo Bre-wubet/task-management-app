@@ -78,8 +78,76 @@ function ManageUsers() {
                     </div>
                 )}
 
+                {/* Summary Statistics */}
+                <div className="mb-8 grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div className="bg-blue-100 rounded-lg shadow p-6">
+                        <div className="flex items-center">
+                            <div className="flex-shrink-0">
+                                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                    <span className="text-white font-bold">{users.length}</span>
+                                </div>
+                            </div>
+                            <div className="ml-4">
+                                <p className="text-sm font-medium text-gray-500">Total Users</p>
+                                <p className="text-2xl font-semibold text-gray-900">{users.length}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-purple-100 rounded-lg shadow p-6">
+                        <div className="flex items-center">
+                            <div className="flex-shrink-0">
+                                <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+                                    <span className="text-white font-bold">
+                                        {users.filter(u => u.role === 'Admin').length}
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="ml-4">
+                                <p className="text-sm font-medium text-gray-500">Admins</p>
+                                <p className="text-2xl font-semibold text-gray-900">
+                                    {users.filter(u => u.role === 'Admin').length}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-green-100 rounded-lg shadow p-6">
+                        <div className="flex items-center">
+                            <div className="flex-shrink-0">
+                                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                    <span className="text-white font-bold">
+                                        {users.filter(u => u.role === 'Member').length}
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="ml-4">
+                                <p className="text-sm font-medium text-gray-500">Members</p>
+                                <p className="text-2xl font-semibold text-gray-900">
+                                    {users.filter(u => u.role === 'Member').length}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-yellow-100 rounded-lg shadow p-6">
+                        <div className="flex items-center">
+                            <div className="flex-shrink-0">
+                                <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+                                    <span className="text-white font-bold">
+                                        {users.reduce((total, user) => total + (user.pendingTasks || 0), 0)}
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="ml-4">
+                                <p className="text-sm font-medium text-gray-500">Total Pending Tasks</p>
+                                <p className="text-2xl font-semibold text-gray-900">
+                                    {users.reduce((total, user) => total + (user.pendingTasks || 0), 0)}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 {/* Search */}
-                <div className="bg-white rounded-lg shadow mb-6 p-6">
+                <div className="bg-gray-100 rounded-lg shadow mb-6 p-6">
                     <div>
                         <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-2">
                             Search Users
@@ -109,26 +177,26 @@ function ManageUsers() {
                     ) : (
                         <div className="overflow-x-auto">
                             <table className="min-w-full divide-y divide-gray-200">
-                                <thead className="bg-gray-50">
+                                <thead className="bg-yellow-100">
                                     <tr>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
                                             User
                                         </th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
                                             Role
                                         </th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
                                             Task Statistics
                                         </th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
                                             Joined
                                         </th>
-                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">
                                             Actions
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody className="bg-white divide-y divide-gray-200">
+                                <tbody className="bg-gray-100 divide-y divide-gray-200">
                                     {filteredUsers.map((userItem) => (
                                         <tr key={userItem._id} className="hover:bg-gray-50">
                                             <td className="px-6 py-4 whitespace-nowrap">
@@ -206,74 +274,6 @@ function ManageUsers() {
                             </table>
                         </div>
                     )}
-                </div>
-
-                {/* Summary Statistics */}
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <div className="bg-white rounded-lg shadow p-6">
-                        <div className="flex items-center">
-                            <div className="flex-shrink-0">
-                                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                                    <span className="text-white font-bold">{users.length}</span>
-                                </div>
-                            </div>
-                            <div className="ml-4">
-                                <p className="text-sm font-medium text-gray-500">Total Users</p>
-                                <p className="text-2xl font-semibold text-gray-900">{users.length}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="bg-white rounded-lg shadow p-6">
-                        <div className="flex items-center">
-                            <div className="flex-shrink-0">
-                                <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
-                                    <span className="text-white font-bold">
-                                        {users.filter(u => u.role === 'Admin').length}
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="ml-4">
-                                <p className="text-sm font-medium text-gray-500">Admins</p>
-                                <p className="text-2xl font-semibold text-gray-900">
-                                    {users.filter(u => u.role === 'Admin').length}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="bg-white rounded-lg shadow p-6">
-                        <div className="flex items-center">
-                            <div className="flex-shrink-0">
-                                <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                                    <span className="text-white font-bold">
-                                        {users.filter(u => u.role === 'Member').length}
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="ml-4">
-                                <p className="text-sm font-medium text-gray-500">Members</p>
-                                <p className="text-2xl font-semibold text-gray-900">
-                                    {users.filter(u => u.role === 'Member').length}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="bg-white rounded-lg shadow p-6">
-                        <div className="flex items-center">
-                            <div className="flex-shrink-0">
-                                <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
-                                    <span className="text-white font-bold">
-                                        {users.reduce((total, user) => total + (user.pendingTasks || 0), 0)}
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="ml-4">
-                                <p className="text-sm font-medium text-gray-500">Total Pending Tasks</p>
-                                <p className="text-2xl font-semibold text-gray-900">
-                                    {users.reduce((total, user) => total + (user.pendingTasks || 0), 0)}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

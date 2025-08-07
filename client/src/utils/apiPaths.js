@@ -5,6 +5,7 @@ export const apiPaths = {
     signup: '/api/auth/register',
     login: '/api/auth/login',
     GET_USER_PROFILE: '/api/auth/profile',
+    UPDATE_USER_PROFILE: '/api/auth/profile/:id',
     },
     USERS: {
         GET_ALL_USERS: '/api/users',

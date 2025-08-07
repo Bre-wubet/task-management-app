@@ -74,10 +74,10 @@ function Login() {
         <AuthLayout>
             <div className="flex flex-col justify-center min-h-[80vh]">
                 <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                    <h2 className="mt-6 text-center text-3xl font-extrabold text-blue-600">
                         Sign in to your account
                     </h2>
-                    <p className="mt-2 text-center text-sm text-gray-600">
+                    <p className="mt-2 text-center text-sm text-red-600">
                         Or{' '}
                         <Link to="/signup" className="font-medium text-blue-600 hover:text-blue-500">
                             create a new account
@@ -87,7 +87,7 @@ function Login() {
 
                 <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                     <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-                        <form className="space-y-6" onSubmit={handleSubmit}>
+                        <form className="form-card space-y-6" onSubmit={handleSubmit}>
                             {error && (
                                 <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
                                     {error}

@@ -91,20 +91,28 @@ function UserDashboard() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Welcome Section */}
                 <div className="mb-8">
-                    <div className="flex items-center">
-                        {user.profileImageUrl && (
-                            <img
-                                className="h-16 w-16 rounded-full mr-4"
-                                src={user.profileImageUrl}
-                                alt={user.name}
-                            />
-                        )}
-                        <div>
-                            <h1 className="text-3xl font-bold text-white mb-2">
-                                Welcome back, {user.name}!
-                            </h1>
-                            <p className="text-white">Here's an overview of your tasks and progress</p>
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                            {user.profileImageUrl && (
+                                <img
+                                    className="h-16 w-16 rounded-full mr-4"
+                                    src={user.profileImageUrl}
+                                    alt={user.name}
+                                />
+                            )}
+                            <div>
+                                <h1 className="text-3xl font-bold text-white mb-2">
+                                    Welcome back, {user.name}!
+                                </h1>
+                                <p className="text-white">Here's an overview of your tasks and progress</p>
+                            </div>
                         </div>
+                        <Link
+                            to="/user/profile"
+                            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                        >
+                            Edit Profile
+                        </Link>
                     </div>
                 </div>
 

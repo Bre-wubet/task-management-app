@@ -59,6 +59,9 @@ export const getUserById = async (req, res) => {
 // @access  Private/Admin
 export const deleteUser = async (req, res) => {
     try {
+        if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+            return res.status(400).json({ message: 'Invalid user ID' });
+          }
         const user = await User.findById(req.params.id);
         if (!user) {
             return res.status(404).json({ message: 'User not found' });

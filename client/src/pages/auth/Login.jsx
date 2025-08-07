@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import AuthLayout from '../../components/layouts/AuthLayout';
+import { UserContext } from '../../context/UserContext';
 
 function Login() {
     const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ function Login() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const { updateUser } = useContext(UserContext);
 
     const handleChange = (e) => {
         setFormData({
@@ -33,12 +35,9 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
         if (!validateForm()) return;
-
         setLoading(true);
         setError('');
-
         try {
             const response = await fetch('http://localhost:3001/api/auth/login', {
                 method: 'POST',
@@ -47,22 +46,17 @@ function Login() {
                 },
                 body: JSON.stringify(formData),
             });
-
             const data = await response.json();
-
             if (!response.ok) {
                 throw new Error(data.message || 'Login failed');
             }
-
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('user', JSON.stringify(data.user));
-
+            // Update context and localStorage
+            updateUser({ ...data.user, token: data.token });
             if (data.user.role === 'Admin') {
                 navigate('/admin/dashboard');
             } else {
                 navigate('/user/dashboard');
             }
-
         } catch (error) {
             setError(error.message || 'An error occurred during login');
         } finally {
@@ -84,7 +78,6 @@ function Login() {
                         </Link>
                     </p>
                 </div>
-
                 <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                     <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                         <form className="form-card space-y-6" onSubmit={handleSubmit}>
@@ -93,7 +86,6 @@ function Login() {
                                     {error}
                                 </div>
                             )}
-
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                                     Email address
@@ -111,7 +103,6 @@ function Login() {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                                     Password
@@ -129,7 +120,6 @@ function Login() {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <button
                                     type="submit"
@@ -140,7 +130,6 @@ function Login() {
                                 </button>
                             </div>
                         </form>
-
                         <div className="mt-6">
                             <div className="relative">
                                 <div className="absolute inset-0 flex items-center">
@@ -152,7 +141,6 @@ function Login() {
                                     </span>
                                 </div>
                             </div>
-
                             <div className="mt-6">
                                 <Link
                                     to="/signup"

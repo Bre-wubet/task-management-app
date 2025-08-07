@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import AuthLayout from '../../components/layouts/AuthLayout';
+import { UserContext } from '../../context/UserContext';
 
 function SignUp() {
     const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ function SignUp() {
     const [loading, setLoading] = useState(false);
     const [showAdminToken, setShowAdminToken] = useState(false);
     const navigate = useNavigate();
+    const { updateUser } = useContext(UserContext);
 
     const handleChange = (e) => {
         setFormData({
@@ -29,33 +31,26 @@ function SignUp() {
             setError('Please fill in all required fields');
             return false;
         }
-        
         if (!formData.email.includes('@')) {
             setError('Please enter a valid email address');
             return false;
         }
-        
         if (formData.password.length < 6) {
             setError('Password must be at least 6 characters long');
             return false;
         }
-        
         if (formData.password !== formData.confirmPassword) {
             setError('Passwords do not match');
             return false;
         }
-        
         return true;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
         if (!validateForm()) return;
-
         setLoading(true);
         setError('');
-
         try {
             const signupData = {
                 name: formData.name,
@@ -64,7 +59,6 @@ function SignUp() {
                 profileImageUrl: formData.profileImageUrl || undefined,
                 adminInviteToken: formData.adminInviteToken || undefined
             };
-
             const response = await fetch('http://localhost:3001/api/auth/register', {
                 method: 'POST',
                 headers: {
@@ -72,22 +66,17 @@ function SignUp() {
                 },
                 body: JSON.stringify(signupData),
             });
-
             const data = await response.json();
-
             if (!response.ok) {
                 throw new Error(data.message || 'Registration failed');
             }
-
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('user', JSON.stringify(data.user));
-
+            // Update context and localStorage
+            updateUser({ ...data.user, token: data.token });
             if (data.user.role === 'Admin') {
                 navigate('/admin/dashboard');
             } else {
                 navigate('/user/dashboard');
             }
-
         } catch (error) {
             setError(error.message || 'An error occurred during registration');
         } finally {
@@ -109,7 +98,6 @@ function SignUp() {
                         </Link>
                     </p>
                 </div>
-
                 <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
                     <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
                         <form className="form-card space-y-6" onSubmit={handleSubmit}>
@@ -118,7 +106,6 @@ function SignUp() {
                                     {error}
                                 </div>
                             )}
-
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                                     Full Name
@@ -136,7 +123,6 @@ function SignUp() {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                                     Email address
@@ -154,7 +140,6 @@ function SignUp() {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                                     Password
@@ -172,7 +157,6 @@ function SignUp() {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
                                     Confirm Password
@@ -190,7 +174,6 @@ function SignUp() {
                                     />
                                 </div>
                             </div>
-
                             <div>
                                 <label htmlFor="profileImageUrl" className="block text-sm font-medium text-gray-700">
                                     Profile Image URL (Optional)
@@ -207,7 +190,6 @@ function SignUp() {
                                     />
                                 </div>
                             </div>
-
                             <div className="flex items-center">
                                 <input
                                     id="showAdminToken"
@@ -221,7 +203,6 @@ function SignUp() {
                                     I have an admin invite token
                                 </label>
                             </div>
-
                             {showAdminToken && (
                                 <div>
                                     <label htmlFor="adminInviteToken" className="block text-sm font-medium text-gray-700">
@@ -240,7 +221,6 @@ function SignUp() {
                                     </div>
                                 </div>
                             )}
-
                             <div>
                                 <button
                                     type="submit"
@@ -251,7 +231,6 @@ function SignUp() {
                                 </button>
                             </div>
                         </form>
-
                         <div className="mt-6">
                             <div className="relative">
                                 <div className="absolute inset-0 flex items-center">
@@ -263,7 +242,6 @@ function SignUp() {
                                     </span>
                                 </div>
                             </div>
-
                             <div className="mt-6">
                                 <Link
                                     to="/login"

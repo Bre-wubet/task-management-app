@@ -56,9 +56,15 @@ cd TaskManger
 
 ### 2. Setup Environment Variables
 
-#### Server
+#### Development
 
 Create a `.env` file in the `server/` directory with the following:
+
+```bash
+cp server/env.example server/.env
+```
+
+Edit `server/.env` with your configuration:
 
 ```
 PORT=3001
@@ -68,44 +74,128 @@ ADMIN_INVITE_TOKEN=your_admin_invite_token
 CLIENT_URL=http://localhost:5173
 ```
 
-#### Client
-
-No environment variables are required by default. The API base URL is set to `http://localhost:3001` in `client/src/utils/apiPaths.js`.
-
 ### 3. Install Dependencies
 
-#### Server
+#### Quick Setup (All at once)
 
 ```bash
-cd server
-npm install
+npm run install:all
 ```
 
-#### Client
+#### Manual Setup
 
 ```bash
-cd ../client
+# Install root dependencies
 npm install
+
+# Install server dependencies
+cd server && npm install
+
+# Install client dependencies
+cd ../client && npm install
 ```
 
 ### 4. Run the Applications
 
-#### Start the Server
+#### Development Mode (Both client and server)
 
 ```bash
-cd server
 npm run dev
 ```
 
-#### Start the Client
+#### Manual Setup
 
 ```bash
-cd ../client
-npm run dev
+# Start server
+npm run server:dev
+
+# Start client (in another terminal)
+npm run client:dev
 ```
 
 - Client: http://localhost:5173
 - Server: http://localhost:3001
+
+## Deployment
+
+### Docker Deployment
+
+#### Build and Run with Docker
+
+```bash
+# Build the Docker image
+npm run docker:build
+
+# Run the container
+npm run docker:run
+```
+
+#### Docker Compose (Recommended)
+
+```bash
+# Start with MongoDB included
+npm run docker:compose
+```
+
+This will start:
+- Application on http://localhost:3001
+- MongoDB on port 27017
+
+### Production Deployment
+
+#### 1. Environment Setup
+
+Create production environment variables:
+
+```bash
+cp env.production .env.production
+```
+
+Update `.env.production` with your production values:
+
+```
+NODE_ENV=production
+PORT=3001
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/taskmanager
+JWT_SECRET=your_super_secret_jwt_key_here
+ADMIN_INVITE_TOKEN=your_admin_invite_token_here
+CLIENT_URL=https://yourdomain.com
+```
+
+#### 2. Build for Production
+
+```bash
+# Build client for production
+npm run build:prod
+
+# Start production server
+npm start
+```
+
+### Cloud Deployment Options
+
+#### Heroku
+
+1. Create a Heroku app
+2. Set environment variables in Heroku dashboard
+3. Deploy:
+
+```bash
+npm run deploy:heroku
+```
+
+#### Vercel/Netlify (Frontend) + Railway/Render (Backend)
+
+1. **Frontend**: Deploy client to Vercel/Netlify
+2. **Backend**: Deploy server to Railway/Render
+3. Update `CLIENT_URL` in backend environment variables
+
+#### DigitalOcean/AWS/GCP
+
+1. Set up a VPS or cloud instance
+2. Install Docker
+3. Use Docker Compose for deployment
+4. Set up reverse proxy (Nginx) for SSL
 
 ---
 

@@ -1,4 +1,6 @@
-export const BASE_URL = 'http://localhost:3001';
+export const BASE_URL = process.env.NODE_ENV === 'production' 
+  ? '' // Use relative URLs in production
+  : 'http://localhost:3001';
 
 export const apiPaths = {
     AUTH: {

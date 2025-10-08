@@ -1,0 +1,25 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "Full-stack task management application",
+  "main": "server/server.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "server:dev": "cd server && npm run dev",
+    "client:dev": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "build:prod": "cd client && npm run build:prod",
+    "start": "cd server && npm start",
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "docker:build": "docker build -t task-manager .",
+    "docker:run": "docker run -p 3001:3001 task-manager",
+    "docker:compose": "docker-compose up -d",
+    "deploy:heroku": "git subtree push --prefix server heroku main"
+  },
+  "keywords": ["task-manager", "react", "nodejs", "mongodb"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

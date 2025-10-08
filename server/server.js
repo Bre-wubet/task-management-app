@@ -64,7 +64,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(frontendPath));
 
   // ✅ Express v5 compatible catch-all route
-  app.get('*', (req, res) => {
+  app.get('/:path(.*)', (req, res) => {
     res.sendFile(path.resolve(frontendPath, 'index.html'));
   });
 } else {

@@ -59,7 +59,7 @@ function SignUp() {
                 profileImageUrl: formData.profileImageUrl || undefined,
                 adminInviteToken: formData.adminInviteToken || undefined
             };
-            const response = await fetch(`${process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'}/api/auth/register`, {
+            const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://task-management-app-ma8h.onrender.com' : 'http://localhost:3001'}/api/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

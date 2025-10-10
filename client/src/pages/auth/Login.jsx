@@ -39,7 +39,7 @@ function Login() {
         setLoading(true);
         setError('');
         try {
-            const response = await fetch(`${process.env.NODE_ENV === 'production' ? '' : 'http://localhost:3001'}/api/auth/login`, {
+            const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://task-management-app-ma8h.onrender.com' : 'http://localhost:3001'}/api/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

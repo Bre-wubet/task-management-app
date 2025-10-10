@@ -1,5 +1,5 @@
 export const BASE_URL = process.env.NODE_ENV === 'production' 
-  ? '' // Use relative URLs in production
+  ? 'https://task-management-app-ma8h.onrender.com' // Use relative URLs in production
   : 'http://localhost:3001';
 
 export const apiPaths = {

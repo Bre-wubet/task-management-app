@@ -55,7 +55,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(frontendPath));
 
   // Catch-all route
-  app.get('/:path(.*)', (req, res) => {
+  app.get('/', (req, res) => {
     res.sendFile(path.join(frontendPath, 'index.html'));
   });
 } else {

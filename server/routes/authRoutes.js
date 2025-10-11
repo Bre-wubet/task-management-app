@@ -14,7 +14,13 @@ router.post('/upload-image', upload.single('image'), (req, res) => {
     if (!req.file) {
         return res.status(400).json({ message: 'No file uploaded' });
     }
-    const imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+    
+    // Construct absolute URL for production, relative for development
+    const baseUrl = process.env.NODE_ENV === 'production' 
+        ? process.env.CLIENT_URL || `${req.protocol}://${req.get('host')}`
+        : `${req.protocol}://${req.get('host')}`;
+    
+    const imageUrl = `${baseUrl}/uploads/${req.file.filename}`;
     res.status(200).json({ imageUrl });
 });
 

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import api from '../../utils/axios';
 import { apiPaths } from '../../utils/apiPaths';
+import { getAbsoluteImageUrl } from '../../utils/imageUtils';
 
 function ProfileUpdate() {
     const { user, updateUser } = useContext(UserContext);
@@ -29,7 +30,9 @@ function ProfileUpdate() {
                 password: '',
                 confirmPassword: ''
             });
-            setPreviewImage(user.profileImageUrl || '');
+            // Ensure image URL is absolute
+            const imageUrl = user.profileImageUrl || '';
+            setPreviewImage(getAbsoluteImageUrl(imageUrl));
         }
     }, [user]);
 

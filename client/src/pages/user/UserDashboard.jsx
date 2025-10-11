@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import api from '../../utils/axios';
 import { apiPaths } from '../../utils/apiPaths';
+import { getAbsoluteImageUrl } from '../../utils/imageUtils';
 
 function UserDashboard() {
     const { user } = useContext(UserContext);
@@ -96,7 +97,7 @@ function UserDashboard() {
                             {user.profileImageUrl && (
                                 <img
                                     className="h-16 w-16 rounded-full mr-4"
-                                    src={user.profileImageUrl}
+                                    src={getAbsoluteImageUrl(user.profileImageUrl)}
                                     alt={user.name}
                                 />
                             )}
